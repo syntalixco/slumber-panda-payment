@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://localhost:5173', 'https://www.slumberpanda.com'],
+  origin: ['http://localhost:8080', 'http://localhost:5173', 'https://www.slumberpanda.com', 'https://slumberpanda.com'],
   credentials: true
 }));
 // Add request logging middleware
