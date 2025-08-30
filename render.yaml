@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: slumber-panda-api
+    env: node
+    plan: free  # Change to 'starter' or higher for production
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RAZORPAY_KEY_ID
+        sync: false  # Set this manually in Render dashboard
+      - key: RAZORPAY_KEY_SECRET
+        sync: false  # Set this manually in Render dashboard
+    healthCheckPath: /
+    autoDeploy: true
+    
+# Optional: Database configuration (if needed in future)
+# databases:
+#   - name: slumber-panda-db
+#     plan: free
+#     databaseName: slumber_panda
+#     user: api_user
+
+# Optional: Static site for frontend (if deploying frontend to Render too)
+# - type: static
+#   name: slumber-panda-frontend
+#   buildCommand: npm run build
+#   staticPublishPath: ./dist
+#   envVars:
+#     - key: VITE_API_BASE_URL
+#       fromService:
+#         type: web
+#         name: slumber-panda-api
+#         property: host
